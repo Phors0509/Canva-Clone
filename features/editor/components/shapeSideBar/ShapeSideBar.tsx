@@ -1,24 +1,40 @@
 import React from "react";
-import { ActiveTool } from "@/features/editor/type";
 import { cn } from "@/lib/utils";
-import ToolSideBarHeader from "../toolSideBarHeader/ToolSideBarHeader";
-import ToolSideBarClose from "../toolSideBarClose/ToolSideBarClose";
+
+import { ActiveTool, Editor } from "@/features/editor/type";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import ShapeTool from "../shapeTool/ShapeTool";
-import { FaCircle, FaSquare, FaSquareFull } from "react-icons/fa";
-import { IoTriangle } from "react-icons/io5";
+import { IoRemoveOutline, IoStar, IoTriangle } from "react-icons/io5";
 import { FaDiamond } from "react-icons/fa6";
+
+import {
+    FaCircle,
+    FaLongArrowAltDown,
+    FaLongArrowAltLeft,
+    FaLongArrowAltRight,
+    FaLongArrowAltUp,
+    FaSquare,
+    FaSquareFull,
+} from "react-icons/fa";
+import ToolSideBarHeader from "@/features/editor/components/toolSideBarHeader/ToolSideBarHeader";
+import ToolSideBarClose from "@/features/editor/components/toolSideBarClose/ToolSideBarClose";
+import ShapeTool from "@/features/editor/components/shapeTool/ShapeTool";
+import { CgBorderStyleDotted } from "react-icons/cg";
+import { TbLineDotted } from "react-icons/tb";
 interface ShapeSideBarProps {
+    editor: Editor | undefined;
     activeTool: ActiveTool;
     onChangeActiveTool: (tool: ActiveTool) => void;
 }
+
 const ShapeSideBar = ({
+    editor,
     activeTool,
     onChangeActiveTool,
 }: ShapeSideBarProps) => {
     const onClose = () => {
         onChangeActiveTool("select");
     };
+
     return (
         <aside
             className={cn(
@@ -27,22 +43,73 @@ const ShapeSideBar = ({
             )}
         >
             <ToolSideBarHeader
+                title="Line"
+                description="Add line to your Canvas"
+            />
+            <ScrollArea>
+                <div className="grid grid-cols-3">
+                    <ShapeTool
+                        onClick={() => editor?.addLine()}
+                        icon={IoRemoveOutline}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addDashedLine()}
+                        icon={CgBorderStyleDotted}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addDottedLine()}
+                        icon={TbLineDotted}
+                    />
+                </div>
+            </ScrollArea>
+
+            <ToolSideBarHeader
                 title="Shapes"
                 description="Add shape to your Canava Nigger!!!"
             />
             <ScrollArea>
                 <div className="grid grid-cols-3">
-                    <ShapeTool onClick={() => {}} icon={FaCircle} />
-                    <ShapeTool onClick={() => {}} icon={FaSquare} />
-                    <ShapeTool onClick={() => {}} icon={FaSquareFull} />
-                    <ShapeTool onClick={() => {}} icon={IoTriangle} />
                     <ShapeTool
-                        onClick={() => {}}
+                        onClick={() => editor?.addCircle()}
+                        icon={FaCircle}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addRectangle()}
+                        icon={FaSquare}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addSquare()}
+                        icon={FaSquareFull}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addTraingle()}
                         icon={IoTriangle}
-                        iconClassName="rotate-180"
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addStar()}
+                        icon={IoStar}
                     />
 
-                    <ShapeTool onClick={() => {}} icon={FaDiamond} />
+                    <ShapeTool
+                        onClick={() => editor?.addDiamond()}
+                        icon={FaDiamond}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addArrowRight()}
+                        icon={FaLongArrowAltRight}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addArrowLeft()}
+                        icon={FaLongArrowAltLeft}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addArrowUp()}
+                        icon={FaLongArrowAltUp}
+                    />
+                    <ShapeTool
+                        onClick={() => editor?.addArrowDown()}
+                        icon={FaLongArrowAltDown}
+                    />
                 </div>
             </ScrollArea>
 

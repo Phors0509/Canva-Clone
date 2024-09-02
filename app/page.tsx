@@ -1,8 +1,3 @@
-import { Button } from "@/components/ui/button";
 export default function Home() {
-    return (
-        <div>
-            <Button>AH JM</Button>
-        </div>
-    );
+    return <div>url is /editor/123</div>;
 }
