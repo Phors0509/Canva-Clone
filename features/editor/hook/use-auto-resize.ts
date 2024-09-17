@@ -21,7 +21,6 @@ export const useAutoResize = ({ canvas, container }: UseAutoResizeProps) => {
         const scale = fabric.util.findScaleToFit(localWorkSpace, { width: container.offsetWidth, height: container.offsetHeight });
 
         const zoom = zoomRatio * scale;
-
         canvas.setViewportTransform(fabric.iMatrix.concat())
 
         canvas.zoomToPoint(new fabric.Point(center.left, center.top), zoom)

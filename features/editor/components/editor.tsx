@@ -10,6 +10,7 @@ import Footer from "@/features/editor/components/footer/Footer";
 import ShapeSideBar from "@/features/editor/components/shapeSideBar/ShapeSideBar";
 import FillColorSideBar from "./fillColorSideBar/FillColorSideBar";
 import StrokeColorSideBar from "./strokeColorSideBar/strokeColorSideBar";
+import StrokeWidthSideBar from "./strokeWidthSideBar/strokeWidthSideBar";
 
 function Editor() {
     const [activeTool, setActiveTool] = useState<ActiveTool>("select");
@@ -82,6 +83,11 @@ function Editor() {
                     onChangeActiveTool={onChangeActiveTool}
                 />
                 <StrokeColorSideBar
+                    editor={editor}
+                    activeTool={activeTool}
+                    onChangeActiveTool={onChangeActiveTool}
+                />
+                <StrokeWidthSideBar
                     editor={editor}
                     activeTool={activeTool}
                     onChangeActiveTool={onChangeActiveTool}

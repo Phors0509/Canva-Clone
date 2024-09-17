@@ -57,7 +57,9 @@ export type ActiveTool =
 // ShapeSideBar
 export const FILL_COLOR = "rgba(0,0,0,1)";
 export const STROKE_COLOR = "rgba(0,0,0,1)";
-export const STROKE_WIDTH = 1;
+export const STROKE_WIDTH = 1
+export const STROKE_DASH_ARRY = []
+
 export const COMMON_WIDTH_HEIGHT = {
     width: 100,
     height: 100,
@@ -141,9 +143,11 @@ export type BuildEditorProps = {
     fillColor: string
     strokeColor: string
     strokeWidth: number
+    strokeDashArray: number[]
     setFillColor: (value: string) => void
     setStrokeColor: (valur: string) => void
     setStrokeWidth: (value: number) => void
+    setStrokeDashArray: (value: number[]) => void
 }
 
 
@@ -152,10 +156,12 @@ export interface Editor {
     changeFillColor: (value: string) => void;
     changeStrokeColor: (value: string) => void;
     changeStrokeWidth: (value: number) => void;
+    changeStrokeDashArray: (value: number[]) => void;
     canvas: fabric.Canvas;
     getActiveFillColor: () => string
     getActiveStrokeColor: () => string
-    strokeWidth: number
+    getActiveStrokeDashArray: () => number[]
+    getActiveStrokeWidth: () => number
     selectedObjects: fabric.Object[]
 
     //Line
