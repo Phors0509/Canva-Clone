@@ -27,6 +27,26 @@ const buildEdior = ({ canvas, setFillColor, setStrokeColor, setStrokeWidth, fill
     }
 
     return {
+        // Forward : 
+        bringForward: () => {
+            canvas.getActiveObjects().forEach((object) => {
+                canvas.bringForward(object);
+                canvas.renderAll();
+
+                const workSpace = getWorkspace()
+                workSpace?.sendBackwards()
+
+            });
+        },
+        bringBackward: () => {
+            canvas.getActiveObjects().forEach((object) => {
+                canvas.sendBackwards(object)
+                canvas.renderAll()
+
+                const workSpace = getWorkspace()
+                workSpace?.sendBackwards()
+            })
+        },
 
         changeFillColor: (value: string) => {
             setFillColor(value)

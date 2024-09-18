@@ -4,6 +4,7 @@ import { ActiveTool, Editor } from "../../type";
 import Hint from "@/components/hint";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ArrowUp, ArrowDown } from "lucide-react";
 interface ToolBarProps {
     editor: Editor | undefined;
     activeTool: ActiveTool;
@@ -75,6 +76,28 @@ const ToolBar = ({ editor, activeTool, onChangeActiveTool }: ToolBarProps) => {
                         )}
                     >
                         <BsBorderWidth className="size-4" />
+                    </Button>
+                </Hint>
+            </div>
+            <div className="flex items-center h-full justify-center">
+                <Hint label="Send Forward" side="bottom" sideOffset={5}>
+                    <Button
+                        onClick={() => editor?.bringForward()}
+                        size={"icon"}
+                        variant={"ghost"}
+                    >
+                        <ArrowUp className="size-4" />
+                    </Button>
+                </Hint>
+            </div>
+            <div className="flex items-center h-full justify-center">
+                <Hint label="Send Backward" side="bottom" sideOffset={5}>
+                    <Button
+                        onClick={() => editor?.bringBackward()}
+                        size={"icon"}
+                        variant={"ghost"}
+                    >
+                        <ArrowDown className="size-4" />
                     </Button>
                 </Hint>
             </div>
