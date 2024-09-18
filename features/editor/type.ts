@@ -153,6 +153,8 @@ export type BuildEditorProps = {
 
 
 export interface Editor {
+    getActiveOpacity: () => number;
+    changeOpacity: (value: number) => void;
     bringForward: () => void;
     bringBackward: () => void;
     changeFillColor: (value: string) => void;

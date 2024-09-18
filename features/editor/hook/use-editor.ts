@@ -27,6 +27,26 @@ const buildEdior = ({ canvas, setFillColor, setStrokeColor, setStrokeWidth, fill
     }
 
     return {
+        // opacity
+        getActiveOpacity: () => {
+            const selectedObject = selectedObjects[0];
+
+            if (!selectedObject) {
+                return 1
+            }
+
+            const value = selectedObject.get("opacity") || 1;
+
+            return value as number;
+
+        },
+        changeOpacity: (value: number) => {
+            canvas.getActiveObjects().forEach((object) => {
+                object.set({ opacity: value });
+            });
+            canvas.renderAll();
+        },
+
         // Forward : 
         bringForward: () => {
             canvas.getActiveObjects().forEach((object) => {
