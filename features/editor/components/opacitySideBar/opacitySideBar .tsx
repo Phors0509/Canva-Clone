@@ -5,7 +5,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import ToolSideBarHeader from "@/features/editor/components/toolSideBarHeader/ToolSideBarHeader";
 import ToolSideBarClose from "@/features/editor/components/toolSideBarClose/ToolSideBarClose";
 import { Slider } from "@/components/ui/slider";
-import { useEditor } from "../../hook/use-editor";
 
 interface OpacitySideBarProps {
     editor: Editor | undefined;

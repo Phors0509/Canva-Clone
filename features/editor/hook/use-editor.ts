@@ -1,7 +1,7 @@
 import { useCallback, useState, useMemo } from "react";
 import { fabric } from "fabric";
 import { useAutoResize } from "./use-auto-resize";
-import { BuildEditorProps, CIRCLE_OPTIONS, Editor, RECTANGLE_OPTIONS, SQUARE_OPTIONS, TRIANGLE_OPTIONS, STAR_OPTIONS, DIAMOND_OPTIONS, ARROW_OPTIONS, LINE_OPTIONS, DASHED_LINE_OPTIONS, DOTTED_LINE_OPTIONS, FILL_COLOR, STROKE_COLOR, STROKE_WIDTH, EditorHookProps, STROKE_DASH_ARRY } from "@/features/editor/type";
+import { BuildEditorProps, CIRCLE_OPTIONS, Editor, RECTANGLE_OPTIONS, SQUARE_OPTIONS, TRIANGLE_OPTIONS, STAR_OPTIONS, DIAMOND_OPTIONS, ARROW_OPTIONS, LINE_OPTIONS, DASHED_LINE_OPTIONS, DOTTED_LINE_OPTIONS, FILL_COLOR, STROKE_COLOR, STROKE_WIDTH, EditorHookProps, STROKE_DASH_ARRY, TEXT_OPTIONS } from "@/features/editor/type";
 import { useCanvasEvents } from "./use-canvas-events";
 import { isTextType } from "../utils";
 
@@ -27,6 +27,15 @@ const buildEdior = ({ canvas, setFillColor, setStrokeColor, setStrokeWidth, fill
     }
 
     return {
+        // Add text
+        addText: (value, option) => {
+            const object = new fabric.IText(value, {
+                ...TEXT_OPTIONS,
+                fill: fillColor,
+                ...option
+            });
+            addToCanvas(object)
+        },
         // opacity
         getActiveOpacity: () => {
             const selectedObject = selectedObjects[0];

@@ -8,10 +8,11 @@ import Sidebar from "@/features/editor/components/sidebar/sidebar";
 import ToolBar from "@/features/editor/components/toolbar/ToolBar";
 import Footer from "@/features/editor/components/footer/Footer";
 import ShapeSideBar from "@/features/editor/components/shapeSideBar/ShapeSideBar";
-import FillColorSideBar from "./fillColorSideBar/FillColorSideBar";
-import StrokeColorSideBar from "./strokeColorSideBar/strokeColorSideBar";
-import StrokeWidthSideBar from "./strokeWidthSideBar/strokeWidthSideBar";
-import OpacitySideBar from "./opacitySideBar/opacitySideBar ";
+import FillColorSideBar from "@/features/editor/components/fillColorSideBar/FillColorSideBar";
+import StrokeColorSideBar from "@/features/editor/components/strokeColorSideBar/strokeColorSideBar";
+import StrokeWidthSideBar from "@/features/editor/components/strokeWidthSideBar/strokeWidthSideBar";
+import OpacitySideBar from "@/features/editor/components/opacitySideBar/opacitySideBar ";
+import TextSideBar from "@/features/editor/components/TextSideBar/TextSideBar";
 
 function Editor() {
     const [activeTool, setActiveTool] = useState<ActiveTool>("select");
@@ -94,6 +95,11 @@ function Editor() {
                     onChangeActiveTool={onChangeActiveTool}
                 />
                 <OpacitySideBar
+                    editor={editor}
+                    activeTool={activeTool}
+                    onChangeActiveTool={onChangeActiveTool}
+                />
+                <TextSideBar
                     editor={editor}
                     activeTool={activeTool}
                     onChangeActiveTool={onChangeActiveTool}
